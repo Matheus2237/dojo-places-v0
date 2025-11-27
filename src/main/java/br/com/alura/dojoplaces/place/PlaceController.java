@@ -5,10 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/place")
@@ -44,4 +44,27 @@ public class PlaceController {
 
         return "redirect:/place/create";
     }
+
+    @GetMapping
+    public String list(Model model) {
+        List<PlaceView> places = placeRepository.findAll()
+                .stream()
+                .map(PlaceView::fromPlace)
+                .toList();
+        model.addAttribute("places", places);
+        return "place/viewAllPlaces";
+    }
+
+//    @GetMapping("/{id}/edit")
+//    public String view(@PathVariable Long id, Model model) {
+//        Optional<Place> possiblePlace = placeRepository.findById(id);
+//        if (possiblePlace.isEmpty()) {
+//            return "place/notFound";
+//        }
+//
+//        Place place = possiblePlace.get();
+//        model.addAttribute("place", place);
+//
+//        return "place/editPlace";
+//    }
 }
