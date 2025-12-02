@@ -16,15 +16,22 @@ public class PlaceController {
 
     private final PlaceRepository placeRepository;
     private final RegisterPlaceFormValidator registerPlaceFormValidator;
+    private final EditPlaceFormValidator editPlaceFormValidator;
 
-    public PlaceController(PlaceRepository placeRepository, RegisterPlaceFormValidator registerPlaceFormValidator) {
+    public PlaceController(PlaceRepository placeRepository, RegisterPlaceFormValidator registerPlaceFormValidator, EditPlaceFormValidator editPlaceFormValidator) {
         this.placeRepository = placeRepository;
         this.registerPlaceFormValidator = registerPlaceFormValidator;
+        this.editPlaceFormValidator = editPlaceFormValidator;
     }
 
     @InitBinder("registerPlaceForm")
     public void initBinderCreate(WebDataBinder binder) {
         binder.addValidators(registerPlaceFormValidator);
+    }
+
+    @InitBinder("editPlaceForm")
+    public void initBinderEdit(WebDataBinder binder) {
+        binder.addValidators(editPlaceFormValidator);
     }
 
     @GetMapping("/create")
@@ -55,16 +62,33 @@ public class PlaceController {
         return "place/viewAllPlaces";
     }
 
-//    @GetMapping("/{id}/edit")
-//    public String view(@PathVariable Long id, Model model) {
-//        Optional<Place> possiblePlace = placeRepository.findById(id);
-//        if (possiblePlace.isEmpty()) {
-//            return "place/notFound";
-//        }
-//
-//        Place place = possiblePlace.get();
-//        model.addAttribute("place", place);
-//
-//        return "place/editPlace";
-//    }
+    @GetMapping("/{id}/edit")
+    public String edit(@PathVariable Long id, EditPlaceForm editPlaceForm, Model model) {
+        Optional<Place> possiblePlace = placeRepository.findById(id);
+        if (possiblePlace.isEmpty()) {
+            return "place/notFound";
+        }
+
+        Place place = possiblePlace.get();
+        if (!editPlaceForm.isDirty()) editPlaceForm = EditPlaceForm.from(place);
+
+        model.addAttribute("placeId", id);
+        model.addAttribute("editPlaceForm", editPlaceForm);
+
+        return "place/editPlace";
+    }
+
+    @PostMapping("/{placeId}/edit")
+    public String update(@PathVariable Long placeId, @Valid EditPlaceForm editPlaceForm, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            editPlaceForm.markAsDirty();
+            return edit(placeId, editPlaceForm, model);
+        }
+
+        Place place = placeRepository.findById(placeId).get();
+        editPlaceForm.updatePlace(place);
+        placeRepository.save(place);
+
+        return "redirect:/place";
+    }
 }

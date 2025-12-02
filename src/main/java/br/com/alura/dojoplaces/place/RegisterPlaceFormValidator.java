@@ -22,7 +22,7 @@ public class RegisterPlaceFormValidator implements Validator {
     public void validate(Object target, Errors errors) {
         if (target instanceof RegisterPlaceForm form
                 && placeRepository.existsByCode(form.getCode())) {
-            errors.rejectValue("code", null, "A place with the same code already exists.");
+            errors.rejectValue("code", null, "Um lugar com o mesmo código já existe.");
         }
     }
 }

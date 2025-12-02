@@ -99,4 +99,8 @@ public class Place {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    public void registerUpdateDate() {
+        this.updatedAt = LocalDateTime.now();
+    }
 }
