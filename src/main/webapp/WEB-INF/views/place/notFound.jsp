@@ -6,7 +6,9 @@
     <title>Dojo - Lugares</title>
 </head>
 <body>
-    <h1>Lugar não encontrado</h1>
-    <p>O lugar desejado não foi encontrado.</p>
+<h1>Lugar não encontrado</h1>
+<p>O lugar desejado não foi encontrado.</p>
+
+<a href="/place">Voltar para lista de lugares</a>
 </body>
 </html>

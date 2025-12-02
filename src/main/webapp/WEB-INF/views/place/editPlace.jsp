@@ -9,6 +9,8 @@
 
 <h1>Edição de lugar</h1>
 
+<a href="/place">Voltar para lista de lugares</a>
+
 <form:form method="POST" action="/place/${placeId}/edit" modelAttribute="editPlaceForm">
 
     <form:hidden path="id"/>
@@ -38,6 +40,7 @@
     </div>
 
     <button type="submit">Salvar alterações</button>
+    <a href="/place">Cancelar</a>
 
 </form:form>
 

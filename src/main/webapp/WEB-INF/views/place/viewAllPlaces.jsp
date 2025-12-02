@@ -6,26 +6,35 @@
     <title>Dojo - Lugares</title>
 </head>
 <body>
-    <h1>Lugares</h1>
-    <table border="1" cellpadding="4" cellspacing="0">
-        <thead>
+<h1>Lugares</h1>
+
+<a href="/place/create">Cadastrar novo lugar</a>
+
+<table border="1" cellpadding="4" cellspacing="0">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>nome</th>
+        <th>codigo</th>
+        <th>dataCriacao</th>
+        <th>dias desde a última atualização</th>
+        <th>ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="place" items="${places}">
         <tr>
-            <th>id</th>
-            <th>nome</th>
-            <th>codigo</th>
-            <th>dataCriacao</th>
-            <th>dias desde a última atualização</th>
+            <td>${place.id}</td>
+            <td>${place.name}</td>
+            <td>${place.code}</td>
+            <td>${place.formattedCreationDate}</td>
+            <td>${place.formattedDaysSinceLastUpdate}</td>
+            <td>
+                <a href="/place/${place.id}/edit">Editar</a>
+            </td>
         </tr>
-        </thead>
-        <c:forEach var="place" items="${places}">
-            <tbody>
-                <td>${place.id}</td>
-                <td>${place.name}</td>
-                <td>${place.code}</td>
-                <td>${place.formattedCreationDate}</td>
-                <td>${place.formattedDaysSinceLastUpdate}</td>
-            </tbody>
-        </c:forEach>
-    </table>
+    </c:forEach>
+    </tbody>
+</table>
 </body>
 </html>

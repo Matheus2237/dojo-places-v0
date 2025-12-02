@@ -7,6 +7,9 @@
 </head>
 <body>
 <h1>Cadastro de lugares</h1>
+
+<a href="/place">Voltar para lista de lugares</a>
+
 <form:form method="POST" action="/place/create" modelAttribute="registerPlaceForm">
 
     <div class="form-group">
@@ -34,6 +37,7 @@
     </div>
 
     <button type="submit">Cadastrar</button>
+    <a href="/place">Cancelar</a>
 
 </form:form>
 </body>
