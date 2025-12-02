@@ -1,5 +1,6 @@
 package br.com.alura.dojoplaces.place;
 
+import br.com.alura.dojoplaces.exception.PlaceNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/place")
@@ -64,12 +64,8 @@ public class PlaceController {
 
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable Long id, EditPlaceForm editPlaceForm, Model model) {
-        Optional<Place> possiblePlace = placeRepository.findById(id);
-        if (possiblePlace.isEmpty()) {
-            return "place/notFound";
-        }
+        Place place = placeRepository.findById(id).orElseThrow(PlaceNotFoundException::new);
 
-        Place place = possiblePlace.get();
         if (!editPlaceForm.isDirty()) editPlaceForm = EditPlaceForm.from(place);
 
         model.addAttribute("placeId", id);
@@ -85,7 +81,7 @@ public class PlaceController {
             return edit(placeId, editPlaceForm, model);
         }
 
-        Place place = placeRepository.findById(placeId).get();
+        Place place = placeRepository.findById(placeId).orElseThrow(PlaceNotFoundException::new);
         editPlaceForm.updatePlace(place);
         placeRepository.save(place);
 
