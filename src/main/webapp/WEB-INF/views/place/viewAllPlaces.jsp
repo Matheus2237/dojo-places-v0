@@ -30,7 +30,16 @@
             <td>${place.formattedCreationDate}</td>
             <td>${place.formattedDaysSinceLastUpdate}</td>
             <td>
-                <a href="/place/${place.id}/edit">Editar</a>
+                <form action="/place/${place.id}/edit" method="get" style="display:inline;">
+                    <button type="submit">
+                        Editar
+                    </button>
+                </form>
+                <form action="/place/${place.id}/delete" method="post" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Tem certeza que deseja remover este lugar?');">
+                        Remover
+                    </button>
+                </form>
             </td>
         </tr>
     </c:forEach>

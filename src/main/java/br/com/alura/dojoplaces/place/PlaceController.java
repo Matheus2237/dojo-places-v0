@@ -87,4 +87,11 @@ public class PlaceController {
 
         return "redirect:/place";
     }
+
+    @PostMapping("/{placeId}/delete")
+    public String delete(@PathVariable Long placeId) {
+        Place place = placeRepository.findById(placeId).orElseThrow(PlaceNotFoundException::new);
+        placeRepository.delete(place);
+        return "redirect:/place";
+    }
 }
