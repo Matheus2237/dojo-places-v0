@@ -42,10 +42,10 @@ class EditPlaceFormValidatorTest {
 
         @Test
         void should_add_error_when_code_exists_and_belongs_to_different_place() {
-            EditPlaceForm form = new EditPlaceForm(1L, "Place A", "ABC123", "Neighborhood", "City");
+            EditPlaceForm form = new EditPlaceForm(1L, "Place A", "ABC123", "11111111", "Neighborhood", "City");
             Errors errors = new BeanPropertyBindingResult(form, "editPlaceForm");
 
-            Place existingPlace = new Place("Some place", "ABC123", "Another Neighborhood", "Another City");
+            Place existingPlace = new Place("Some place", "ABC123", "11111111", "Another Neighborhood", "Another City");
             existingPlace.setId(2L);
             when(placeRepository.findByCode("ABC123")).thenReturn(Optional.of(existingPlace));
 
@@ -59,10 +59,10 @@ class EditPlaceFormValidatorTest {
 
         @Test
         void should_not_add_error_when_code_exists_and_belongs_to_same_place() {
-            EditPlaceForm form = new EditPlaceForm(1L, "Place A", "ABC123", "Neighborhood", "City");
+            EditPlaceForm form = new EditPlaceForm(1L, "Place A", "ABC123", "11111111", "Neighborhood", "City");
             Errors errors = new BeanPropertyBindingResult(form, "editPlaceForm");
 
-            Place existingPlace = new Place("Place A", "ABC123", "Another Neighborhood", "Another City");
+            Place existingPlace = new Place("Place A", "ABC123", "11111111", "Another Neighborhood", "Another City");
             existingPlace.setId(1L);
             when(placeRepository.findByCode("ABC123")).thenReturn(Optional.of(existingPlace));
 
@@ -74,7 +74,7 @@ class EditPlaceFormValidatorTest {
 
         @Test
         void should_not_add_error_when_code_does_not_exist() {
-            EditPlaceForm form = new EditPlaceForm(1L, "Place A", "XYZ789", "Neighborhood", "City");
+            EditPlaceForm form = new EditPlaceForm(1L, "Place A", "XYZ789", "11111111", "Neighborhood", "City");
             Errors errors = new BeanPropertyBindingResult(form, "editPlaceForm");
 
             when(placeRepository.findByCode("XYZ789")).thenReturn(Optional.empty());

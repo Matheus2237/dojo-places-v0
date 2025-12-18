@@ -22,6 +22,9 @@ public class Place {
     @Column(nullable = false, unique = true)
     private String code;
 
+    @Column(nullable = false, length = 8)
+    private String cep;
+
     @Column(nullable = false, length = 100)
     private String neighborhood;
 
@@ -36,9 +39,10 @@ public class Place {
     public Place() {
     }
 
-    public Place(String name, String code, String neighborhood, String city) {
+    public Place(String name, String code, String cep, String neighborhood, String city) {
         this.name = name;
         this.code = code;
+        this.cep = cep;
         this.neighborhood = neighborhood;
         this.city = city;
         this.createdAt = LocalDateTime.now();
@@ -66,6 +70,14 @@ public class Place {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
     public String getNeighborhood() {

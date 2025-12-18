@@ -19,6 +19,9 @@ public class EditPlaceForm {
     )
     private String code;
 
+    @NotBlank(message = "Cep is required")
+    private String cep;
+
     @NotBlank(message = "Bairro é obrigatório")
     @Size(max = 100, message = "Bairro deve ter no máximo 100 caracteres")
     private String neighborhood;
@@ -31,10 +34,11 @@ public class EditPlaceForm {
 
     public EditPlaceForm() {}
 
-    public EditPlaceForm(Long id, String name, String code, String neighborhood, String city) {
+    public EditPlaceForm(Long id, String name, String code, String cep, String neighborhood, String city) {
         this.id = id;
         this.name = name;
         this.code = code;
+        this.cep = cep;
         this.neighborhood = neighborhood;
         this.city = city;
         this.dirty = false;
@@ -45,6 +49,7 @@ public class EditPlaceForm {
                 place.getId(),
                 place.getName(),
                 place.getCode(),
+                place.getCep(),
                 place.getNeighborhood(),
                 place.getCity()
         );
@@ -74,6 +79,14 @@ public class EditPlaceForm {
         this.code = code;
     }
 
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
     public String getNeighborhood() {
         return neighborhood;
     }
@@ -101,6 +114,7 @@ public class EditPlaceForm {
     public void updatePlace(Place place) {
         place.setName(this.name);
         place.setCode(this.code);
+        place.setCep(this.cep);
         place.setNeighborhood(this.neighborhood);
         place.setCity(this.city);
         place.registerUpdateDate();

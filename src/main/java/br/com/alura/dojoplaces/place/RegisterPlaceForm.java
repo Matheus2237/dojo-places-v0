@@ -17,6 +17,9 @@ public class RegisterPlaceForm {
     )
     private String code;
 
+    @NotBlank(message = "Cep is required")
+    private String cep;
+
     @NotBlank(message = "Neighborhood is required")
     @Size(max = 100, message = "Neighborhood must be at most 100 characters")
     private String neighborhood;
@@ -28,9 +31,10 @@ public class RegisterPlaceForm {
     public RegisterPlaceForm() {
     }
 
-    public RegisterPlaceForm(String name, String code, String neighborhood, String city) {
+    public RegisterPlaceForm(String name, String code, String cep, String neighborhood, String city) {
         this.name = name;
         this.code = code;
+        this.cep = cep;
         this.neighborhood = neighborhood;
         this.city = city;
     }
@@ -51,6 +55,14 @@ public class RegisterPlaceForm {
         this.code = code;
     }
 
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
     public String getNeighborhood() {
         return neighborhood;
     }
@@ -68,6 +80,6 @@ public class RegisterPlaceForm {
     }
 
     public Place toEntity() {
-        return new Place(name, code, neighborhood, city);
+        return new Place(name, code, cep, neighborhood, city);
     }
 }

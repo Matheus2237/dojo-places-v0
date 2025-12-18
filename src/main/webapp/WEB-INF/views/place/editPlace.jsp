@@ -28,6 +28,12 @@
     </div>
 
     <div class="form-group">
+        <label for="cep">Cep:</label>
+        <form:input path="cep" id="cep" maxlength="8" onblur="findCep()"/>
+        <form:errors path="cep" cssClass="error"/>
+    </div>
+
+    <div class="form-group">
         <label for="neighborhood">Bairro:</label>
         <form:input path="neighborhood" id="neighborhood" maxlength="100"/>
         <form:errors path="neighborhood" cssClass="error"/>
@@ -43,6 +49,6 @@
     <a href="/place">Cancelar</a>
 
 </form:form>
-
+<script src="/assets/js/cep.js"></script>
 </body>
 </html>
