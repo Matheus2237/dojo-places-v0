@@ -26,7 +26,7 @@
 
     <div class="form-group">
         <label for="cep">Cep:</label>
-        <form:input path="cep" id="cep" maxlength="8" onblur="findCep()"/>
+        <form:input path="cep" id="cep" maxlength="9" onkeyup="formatCep()" onblur="findCep()"/>
         <form:errors path="cep" cssClass="error"/>
     </div>
 

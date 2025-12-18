@@ -1,3 +1,18 @@
+function formatCep() {
+    const cepInput = document.getElementById('cep');
+    if (!cepInput) return;
+
+    let cep = cepInput.value.replace(/\D/g, '');
+
+    if (cep.length > 8) {
+        cep = cep.substring(0, 8);
+    }
+
+    if (cep.length > 5) {
+        cepInput.value = cep.substring(0, 5) + '-' + cep.substring(5);
+    }
+}
+
 function findCep() {
     const cepInput = document.getElementById('cep');
     if (!cepInput) return;
