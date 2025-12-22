@@ -1,5 +1,7 @@
-package br.com.alura.dojoplaces.place;
+package br.com.alura.dojoplaces.place.validator;
 
+import br.com.alura.dojoplaces.place.repository.PlaceRepository;
+import br.com.alura.dojoplaces.place.web.RegisterPlaceForm;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

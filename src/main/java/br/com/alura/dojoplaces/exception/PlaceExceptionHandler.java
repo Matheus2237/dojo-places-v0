@@ -11,12 +11,12 @@ public class PlaceExceptionHandler {
     @ExceptionHandler(PlaceNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handlePlaceNotFound() {
-        return "place/placeNotFound";
+        return "error/placeNotFound";
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String handleGenericException() {
-        return "error/generalError";
+        return "error/internalError";
     }
 }

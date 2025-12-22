@@ -1,4 +1,4 @@
-package br.com.alura.dojoplaces.viacep;
+package br.com.alura.dojoplaces.viacep.dto;
 
 public class PlaceAutoCompletionDTO {
 

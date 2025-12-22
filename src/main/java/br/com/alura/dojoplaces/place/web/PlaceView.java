@@ -1,4 +1,6 @@
-package br.com.alura.dojoplaces.place;
+package br.com.alura.dojoplaces.place.web;
+
+import br.com.alura.dojoplaces.place.domain.Place;
 
 import java.time.Duration;
 import java.time.LocalDateTime;

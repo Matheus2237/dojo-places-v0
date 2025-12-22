@@ -1,5 +1,6 @@
-package br.com.alura.dojoplaces.place;
+package br.com.alura.dojoplaces.place.repository;
 
+import br.com.alura.dojoplaces.place.domain.Place;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,5 +1,7 @@
-package br.com.alura.dojoplaces.viacep;
+package br.com.alura.dojoplaces.viacep.controller;
 
+import br.com.alura.dojoplaces.viacep.dto.PlaceAutoCompletionDTO;
+import br.com.alura.dojoplaces.viacep.service.ViaCepService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

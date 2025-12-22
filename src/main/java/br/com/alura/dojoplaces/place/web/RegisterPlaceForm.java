@@ -1,5 +1,6 @@
-package br.com.alura.dojoplaces.place;
+package br.com.alura.dojoplaces.place.web;
 
+import br.com.alura.dojoplaces.place.domain.Place;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;

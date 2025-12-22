@@ -1,5 +1,6 @@
-package br.com.alura.dojoplaces.place;
+package br.com.alura.dojoplaces.place.web;
 
+import br.com.alura.dojoplaces.place.domain.Place;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 

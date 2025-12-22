@@ -1,4 +1,4 @@
-package br.com.alura.dojoplaces.place;
+package br.com.alura.dojoplaces.place.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

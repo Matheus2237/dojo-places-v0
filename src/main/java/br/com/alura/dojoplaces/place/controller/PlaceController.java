@@ -1,6 +1,13 @@
-package br.com.alura.dojoplaces.place;
+package br.com.alura.dojoplaces.place.controller;
 
 import br.com.alura.dojoplaces.exception.PlaceNotFoundException;
+import br.com.alura.dojoplaces.place.domain.Place;
+import br.com.alura.dojoplaces.place.repository.PlaceRepository;
+import br.com.alura.dojoplaces.place.validator.EditPlaceFormValidator;
+import br.com.alura.dojoplaces.place.validator.RegisterPlaceFormValidator;
+import br.com.alura.dojoplaces.place.web.EditPlaceForm;
+import br.com.alura.dojoplaces.place.web.PlaceView;
+import br.com.alura.dojoplaces.place.web.RegisterPlaceForm;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
