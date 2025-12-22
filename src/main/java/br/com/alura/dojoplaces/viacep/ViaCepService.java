@@ -12,12 +12,12 @@ public class ViaCepService {
         this.restTemplate = new RestTemplate();
     }
 
-    public PlaceAutoCompletionDTO consultarCep(String cep) {
-        String url = "https://viacep.com.br/ws/" + cep + "/json/";
+    public PlaceAutoCompletionDTO consultarCep(String possibleCep) {
+        String url = "https://viacep.com.br/ws/" + possibleCep + "/json/";
         ViaCepResponse viaCepResponse = restTemplate.getForObject(url, ViaCepResponse.class);
-        String code = viaCepResponse.getCep();
+        String cep = viaCepResponse.getCep();
         String neighborhood = viaCepResponse.getBairro();
         String city = viaCepResponse.getLocalidade();
-        return new PlaceAutoCompletionDTO(code, neighborhood, city);
+        return new PlaceAutoCompletionDTO(cep, neighborhood, city);
     }
 }
