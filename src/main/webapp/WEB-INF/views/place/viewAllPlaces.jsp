@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib tagdir="/WEB-INF/tags/modal" prefix="modal" %>
+
 <html>
 <head>
     <title>Dojo - Lugares</title>
@@ -41,9 +43,9 @@
                     <form action="/place/${place.id}/edit" method="get" class="d-inline">
                         <button class="btn btn-sm btn-primary">Editar</button>
                     </form>
-                    <form action="/place/${place.id}/delete" method="post" class="d-inline">
-                        <button class="btn btn-sm btn-danger"
-                                onclick="return confirm('Tem certeza que deseja remover este lugar?');">
+                    <form action="/place/${place.id}/delete" method="post" class="d-inline delete-form">
+                        <button type="button" class="btn btn-sm btn-danger"
+                                onclick="openDeleteModal(this)">
                             Remover
                         </button>
                     </form>
@@ -54,7 +56,10 @@
     </table>
 </div>
 
+<modal:deleteConfirm></modal:deleteConfirm>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/deleteModal.js"></script>
 
 </body>
 </html>

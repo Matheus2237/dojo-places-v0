@@ -81,6 +81,7 @@ public class RegisterPlaceForm {
     }
 
     public Place toEntity() {
-        return new Place(name, code, cep, neighborhood, city);
+        String cepValue = cep.replaceAll("\\D", "");
+        return new Place(name, code, cepValue, neighborhood, city);
     }
 }

@@ -56,7 +56,7 @@ public class PlaceController {
         Place place = registerPlaceForm.toEntity();
         placeRepository.save(place);
 
-        return "redirect:/place/create";
+        return "redirect:/place";
     }
 
     @GetMapping
